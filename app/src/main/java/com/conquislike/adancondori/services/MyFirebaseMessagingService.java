@@ -30,8 +30,10 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.conquislike.adancondori.main.interactors.ProfileInteractor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.conquislike.adancondori.Constants;
@@ -63,6 +65,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String ACTION_TYPE_NEW_LIKE = "new_like";
     private static final String ACTION_TYPE_NEW_COMMENT = "new_comment";
     private static final String ACTION_TYPE_NEW_POST = "new_post";
+
+    @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+// Get updated InstanceID token.
+        String refreshedToken = s;
+        LogUtil.logDebug(TAG, "Refreshed token: " + refreshedToken);
+
+        // If you want to send messages to this application instance or
+        // manage this apps subscriptions on the server side, send the
+        // Instance ID token to your app server.
+        sendRegistrationToServer(refreshedToken);
+    }
+
+    /**
+     * Persist token to third-party servers.
+     *
+     * Modify this method to associate the user's FCM InstanceID token with any server-side account
+     * maintained by your application.
+     *
+     * @param token The new token.
+     */
+    private void sendRegistrationToServer(String token) {
+        ProfileInteractor.getInstance(getApplicationContext()).updateRegistrationToken(token);
+    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {

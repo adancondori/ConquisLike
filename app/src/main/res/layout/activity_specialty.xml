@@ -50,12 +50,12 @@ tools:context=".main.specialties.SpecialtyActivity">
         app:layout_scrollFlags="scroll|enterAlways"
         app:titleEnabled="false">
 
-        <include
+<!--        <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="?attr/actionBarSize"
             app:layout_collapseMode="parallax"
-            layout="@layout/profile_info"/>
+            layout="@layout/profile_info"/>-->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

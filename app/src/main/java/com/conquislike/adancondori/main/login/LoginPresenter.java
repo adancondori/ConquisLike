@@ -49,6 +49,7 @@ class LoginPresenter extends BasePresenter<LoginView> {
     public void checkIsProfileExist(final String userId) {
         ProfileManager.getInstance(context).isProfileExist(userId, exist -> {
             ifViewAttached(view -> {
+                view.startMainActivity();
                 if (!exist) {
                     view.startCreateProfileActivity();
                 } else {
@@ -56,10 +57,8 @@ class LoginPresenter extends BasePresenter<LoginView> {
                     ProfileInteractor.getInstance(context.getApplicationContext())
                             .addRegistrationToken(FirebaseInstanceId.getInstance().getToken(), userId);
                 }
-
                 view.hideProgress();
-                //view.finish();
-                view.startMainActivity();
+                view.finish();
             });
         });
     }
