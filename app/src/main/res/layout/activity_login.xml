@@ -58,6 +58,7 @@
             android:id="@+id/googleSignInButton"
             android:layout_width="@dimen/base_login_button_width"
             android:layout_height="@dimen/base_login_button_height"
+            android:visibility="gone"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/login_screen_button_margin"
             android:background="@drawable/google_button_bg"

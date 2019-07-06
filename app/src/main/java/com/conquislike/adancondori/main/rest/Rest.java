@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 
 public interface Rest {
-    @GET("specialty-areas/")
+    @GET("specialties/")
     Call<Dato> loadChanges(@Query("q") String status);
 }
 

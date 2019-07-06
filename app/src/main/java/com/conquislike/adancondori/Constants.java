@@ -48,7 +48,8 @@ public class Constants {
     }
 
     // URL BASE
-    public static String BASE_URL = "http://www.conquislike.com/api/";
+    public static String BASE_URL = "http://www.conquislike.com/";
+    public static String BASE_URL_API = "http://www.conquislike.com/api/";
     public static String SPECIALTY_AREAS = "specialty-areas";
     public static String SPECIALTIES = "specialties";
 }

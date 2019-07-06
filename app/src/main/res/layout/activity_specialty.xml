@@ -20,7 +20,7 @@ tools:context=".main.specialties.SpecialtyActivity">
         android:layout_height="match_parent">
 
         <ProgressBar
-            android:id="@+id/postsProgressBar"
+            android:id="@+id/specialtiesProgressBar"
             android:layout_width="@dimen/progress_bar_size"
             android:layout_height="@dimen/progress_bar_size"
             android:layout_gravity="top|center_horizontal"

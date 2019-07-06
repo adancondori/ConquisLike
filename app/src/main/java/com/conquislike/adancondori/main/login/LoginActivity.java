@@ -20,12 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.conquislike.adancondori.Constants;
-import com.conquislike.adancondori.main.main.MainActivity;
-import com.conquislike.adancondori.main.rest.Rest;
 import com.conquislike.adancondori.main.specialties.SpecialtyActivity;
-import com.conquislike.adancondori.model.Dato;
-import com.conquislike.adancondori.model.Specialties;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -45,21 +40,11 @@ import com.conquislike.adancondori.main.editProfile.createProfile.CreateProfileA
 import com.conquislike.adancondori.utils.GoogleApiHelper;
 import com.conquislike.adancondori.utils.LogUtil;
 import com.conquislike.adancondori.utils.LogoutHelper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.Arrays;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> implements LoginView,
-        GoogleApiClient.OnConnectionFailedListener,
-        Callback<Dato> {
+        GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int SIGN_IN_GOOGLE = 9001;
     public static final int LOGIN_REQUEST_CODE = 10001;
@@ -142,7 +127,6 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
 
-        sindronizeData();
         if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         }
@@ -233,39 +217,6 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
     @Override
     public void signInWithFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-    }
-
-    public void sindronizeData(){
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        Rest request = retrofit.create(Rest.class);
-
-        Call<Dato> call = request.loadChanges("status:open");
-        call.enqueue(this);
-    }
-
-    @Override
-    public void onResponse(Call<Dato> call, Response<Dato> response) {
-        if(response.isSuccessful()) {
-            Dato datos = response.body();
-            System.out.println(datos.toString());
-            System.out.println(datos.data.size());
-            //changesList.forEach(change -> System.out.println(change.subject));
-        } else {
-            System.out.println(response.errorBody());
-        }
-    }
-
-    @Override
-    public void onFailure(Call<Dato> call, Throwable t) {
-        System.out.println(t.toString());
     }
 }
 

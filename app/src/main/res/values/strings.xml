@@ -190,5 +190,11 @@
     <string name="new_like_channel_name">New Like</string>
     <string name="new_comment_channel_name">New Comment</string>
 
+    <string name="http">http://</string>
+    <string name="download">Download</string>
+    <string name="write_file">La aplicación necesita permisos para almacenar archivo.</string>
+    <string name="download_file">Descargando especialidad</string>
+
+
 
 </resources>

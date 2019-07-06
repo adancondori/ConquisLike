@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    
+
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -14,6 +14,8 @@
         android:layout_margin="5dp"
         android:elevation="8dp"
         card_view:cardCornerRadius="4dp"
+        card_view:cardBackgroundColor="@color/white"
+        android:background="@color/white"
         card_view:cardElevation="5dp">
 
         <LinearLayout
@@ -25,56 +27,53 @@
 
             <TextView
                 android:id="@+id/date_public"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/primary"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
+                android:textAlignment="center"
                 tools:text="Avengers" />
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
+
                 app:layout_constraintStart_toStartOf="@id/date_public"
                 app:layout_constraintTop_toBottomOf="@id/date_public"
                 app:srcCompat="@drawable/ic_like" />
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="center"
                 app:layout_constraintStart_toStartOf="@id/image"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 tools:text="Avengers" />
 
             <TextView
                 android:id="@+id/description"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:textAlignment="center"
                 android:textColor="@color/secondary_text"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title"
                 tools:text="AM 023 - Especialidad de Santuario, perteneciente al Área de Actividades misioneras y comunitarias." />
 
             <Button
-                android:id="@+id/download"
+                android:id="@+id/btn_spcialties_download"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -86,7 +85,7 @@
                 android:id="@+id/space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="8sp"
                 tools:text="" />
 
