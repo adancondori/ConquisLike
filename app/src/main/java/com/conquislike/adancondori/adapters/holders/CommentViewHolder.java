@@ -40,7 +40,7 @@ import com.conquislike.adancondori.utils.ImageUtil;
 import com.conquislike.adancondori.views.ExpandableTextView;
 
 /**
- * Created by alexey on 10.05.17.
+ * Created by developer on 10.05.17.
  */
 
 public class CommentViewHolder extends RecyclerView.ViewHolder {

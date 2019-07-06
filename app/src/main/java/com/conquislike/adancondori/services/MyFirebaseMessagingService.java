@@ -46,7 +46,7 @@ import com.conquislike.adancondori.utils.ImageUtil;
 import com.conquislike.adancondori.utils.LogUtil;
 
 /**
- * Created by alexey on 13.04.17.
+ * Created by developer on 13.04.17.
  */
 
 

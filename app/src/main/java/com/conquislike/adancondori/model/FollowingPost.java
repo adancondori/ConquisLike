@@ -1,7 +1,7 @@
 package com.conquislike.adancondori.model;
 
 /**
- * Created by Alexey on 22.05.18.
+ * Created by developer on 22.05.18.
  */
 public class FollowingPost {
 

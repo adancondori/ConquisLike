@@ -22,7 +22,7 @@ import com.conquislike.adancondori.model.Post;
 import java.util.List;
 
 /**
- * Created by Alexey on 08.06.18.
+ * Created by developer on 08.06.18.
  */
 public interface SearchPostsView extends BaseFragmentView {
     void onSearchResultsReady(List<Post> posts);

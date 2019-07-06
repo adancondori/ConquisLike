@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.enums;
 
 /**
- * Created by alexey on 05.12.16.
+ * Created by developer on 05.12.16.
  */
 
 public enum UploadImagePrefix {

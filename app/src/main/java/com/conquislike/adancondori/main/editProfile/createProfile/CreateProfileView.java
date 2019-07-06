@@ -19,7 +19,7 @@ package com.conquislike.adancondori.main.editProfile.createProfile;
 import com.conquislike.adancondori.main.editProfile.EditProfileView;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface CreateProfileView extends EditProfileView {

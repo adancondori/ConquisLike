@@ -25,7 +25,7 @@ import com.conquislike.adancondori.model.Post;
 import java.util.List;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface PostDetailsView extends BaseView {

@@ -22,7 +22,7 @@ import com.conquislike.adancondori.main.base.BaseView;
 import com.conquislike.adancondori.model.Post;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface MainView extends BaseView {

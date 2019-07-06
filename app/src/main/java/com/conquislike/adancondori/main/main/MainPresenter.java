@@ -30,7 +30,7 @@ import com.conquislike.adancondori.managers.PostManager;
 import com.conquislike.adancondori.model.Post;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 class MainPresenter extends BasePresenter<MainView> {

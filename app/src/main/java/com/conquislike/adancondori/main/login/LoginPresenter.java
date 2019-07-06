@@ -37,7 +37,7 @@ import com.conquislike.adancondori.utils.PreferencesUtil;
 import com.google.android.gms.tasks.Task;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 class LoginPresenter extends BasePresenter<LoginView> {

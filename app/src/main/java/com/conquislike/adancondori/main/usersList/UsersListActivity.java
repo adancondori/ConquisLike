@@ -43,7 +43,7 @@ import com.conquislike.adancondori.views.FollowButton;
 import java.util.List;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public class UsersListActivity extends BaseActivity<UsersListView, UsersListPresenter> implements UsersListView {

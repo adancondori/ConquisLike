@@ -19,7 +19,7 @@ package com.conquislike.adancondori.main.editProfile;
 import com.conquislike.adancondori.main.pickImageBase.PickImageView;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface EditProfileView extends PickImageView {

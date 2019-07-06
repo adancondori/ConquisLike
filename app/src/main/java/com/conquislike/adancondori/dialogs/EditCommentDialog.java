@@ -34,7 +34,7 @@ import android.widget.EditText;
 import com.conquislike.adancondori.R;
 
 /**
- * Created by alexey on 12.05.17.
+ * Created by developer on 12.05.17.
  */
 
 public class EditCommentDialog extends DialogFragment {

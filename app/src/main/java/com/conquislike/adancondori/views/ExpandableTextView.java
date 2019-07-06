@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.views;
 
 /**
- * Created by alexey on 21.12.16.
+ * Created by developer on 21.12.16.
  */
 
 import android.annotation.TargetApi;

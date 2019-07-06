@@ -37,7 +37,7 @@ import com.conquislike.adancondori.R;
 import com.conquislike.adancondori.main.login.LoginActivity;
 
 /**
- * Created by alexey on 05.12.16.
+ * Created by developer on 05.12.16.
  */
 
 public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V>> extends MvpActivity<V, P> implements BaseView {

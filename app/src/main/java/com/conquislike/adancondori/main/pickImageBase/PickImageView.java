@@ -21,7 +21,7 @@ import android.net.Uri;
 import com.conquislike.adancondori.main.base.BaseView;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface PickImageView extends BaseView {

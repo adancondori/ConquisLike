@@ -17,7 +17,7 @@
 package com.conquislike.adancondori;
 
 /**
- * Created by alexey on 08.12.16.
+ * Created by developer on 08.12.16.
  */
 
 public class Constants {

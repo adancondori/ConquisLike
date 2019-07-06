@@ -31,7 +31,7 @@ import java.io.File;
 import static android.app.Activity.RESULT_OK;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public class PickImagePresenter<V extends PickImageView> extends BasePresenter<V> {

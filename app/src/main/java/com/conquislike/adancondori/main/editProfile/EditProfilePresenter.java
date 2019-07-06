@@ -29,7 +29,7 @@ import com.conquislike.adancondori.model.Profile;
 import com.conquislike.adancondori.utils.ValidationUtil;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public class EditProfilePresenter<V extends EditProfileView> extends PickImagePresenter<V> {

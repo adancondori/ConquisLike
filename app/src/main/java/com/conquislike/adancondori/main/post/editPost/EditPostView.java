@@ -19,7 +19,7 @@ package com.conquislike.adancondori.main.post.editPost;
 import com.conquislike.adancondori.main.post.createPost.CreatePostView;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public interface EditPostView extends CreatePostView {

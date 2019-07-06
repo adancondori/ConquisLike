@@ -30,7 +30,7 @@ import com.conquislike.adancondori.enums.ProfileStatus;
 import com.conquislike.adancondori.managers.ProfileManager;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public class BasePresenter<T extends BaseView & MvpView> extends MvpBasePresenter<T> {

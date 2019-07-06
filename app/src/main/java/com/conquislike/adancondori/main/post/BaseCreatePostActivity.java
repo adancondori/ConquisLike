@@ -27,7 +27,7 @@ import com.conquislike.adancondori.R;
 import com.conquislike.adancondori.main.pickImageBase.PickImageActivity;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 public abstract class BaseCreatePostActivity<V extends BaseCreatePostView, P extends BaseCreatePostPresenter<V>>
         extends PickImageActivity<V, P> implements BaseCreatePostView {

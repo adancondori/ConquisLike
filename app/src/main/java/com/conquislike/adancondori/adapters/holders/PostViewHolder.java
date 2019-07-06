@@ -43,7 +43,7 @@ import com.conquislike.adancondori.utils.GlideApp;
 import com.conquislike.adancondori.utils.ImageUtil;
 
 /**
- * Created by alexey on 27.12.16.
+ * Created by developer on 27.12.16.
  */
 
 public class PostViewHolder extends RecyclerView.ViewHolder {

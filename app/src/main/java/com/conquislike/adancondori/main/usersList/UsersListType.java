@@ -1,7 +1,7 @@
 package com.conquislike.adancondori.main.usersList;
 
 /**
- * Created by Alexey on 16.05.18.
+ * Created by developer on 16.05.18.
  */
 public interface UsersListType {
     int FOLLOWINGS = 115;

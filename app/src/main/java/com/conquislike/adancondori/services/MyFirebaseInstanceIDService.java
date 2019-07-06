@@ -25,7 +25,7 @@ import com.conquislike.adancondori.utils.LogUtil;
 
 
 /**
- * Created by alexey on 14.04.17.
+ * Created by developer on 14.04.17.
  */
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {

@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.managers.listeners;
 
 /**
- * Created by Alexey on 10.05.18.
+ * Created by developer on 10.05.18.
  */
 
 public interface OnRequestComplete {

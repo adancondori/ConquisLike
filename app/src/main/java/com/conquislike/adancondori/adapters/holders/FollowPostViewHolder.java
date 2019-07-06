@@ -9,7 +9,7 @@ import com.conquislike.adancondori.model.Post;
 import com.conquislike.adancondori.utils.LogUtil;
 
 /**
- * Created by Alexey on 22.05.18.
+ * Created by developer on 22.05.18.
  */
 public class FollowPostViewHolder extends PostViewHolder {
 

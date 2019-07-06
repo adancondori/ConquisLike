@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.main.search;
 
 /**
- * Created by Alexey on 11.06.18.
+ * Created by developer on 11.06.18.
  */
 public interface Searchable {
     void search(String searchText);

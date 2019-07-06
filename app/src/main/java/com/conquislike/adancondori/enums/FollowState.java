@@ -1,7 +1,7 @@
 package com.conquislike.adancondori.enums;
 
 /**
- * Created by Alexey on 10.05.18.
+ * Created by developer on 10.05.18.
  */
 public enum FollowState {
     MY_PROFILE,

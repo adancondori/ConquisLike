@@ -21,7 +21,7 @@ import android.app.Activity;
 import com.conquislike.adancondori.main.base.BasePresenter;
 
 /**
- * Created by Alexey on 08.05.18.
+ * Created by developer on 08.05.18.
  */
 
 class SearchPresenter extends BasePresenter<SearchView> {

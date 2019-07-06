@@ -41,7 +41,7 @@ import com.conquislike.adancondori.utils.LogUtil;
 import com.conquislike.adancondori.views.FollowButton;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 class ProfilePresenter extends BasePresenter<ProfileView> {

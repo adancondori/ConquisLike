@@ -25,7 +25,7 @@ import com.conquislike.adancondori.main.editProfile.EditProfilePresenter;
 import com.conquislike.adancondori.utils.PreferencesUtil;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 class CreateProfilePresenter extends EditProfilePresenter<CreateProfileView> {

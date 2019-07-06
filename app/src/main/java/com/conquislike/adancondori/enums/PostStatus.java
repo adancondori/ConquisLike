@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.enums;
 
 /**
- * Created by alexey on 18.01.17.
+ * Created by developer on 18.01.17.
  */
 
 public enum PostStatus {

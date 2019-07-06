@@ -36,7 +36,7 @@ import com.conquislike.adancondori.main.search.users.SearchUsersFragment;
 import com.conquislike.adancondori.utils.LogUtil;
 
 /**
- * Created by Alexey on 08.05.18.
+ * Created by developer on 08.05.18.
  */
 
 public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> implements SearchView {

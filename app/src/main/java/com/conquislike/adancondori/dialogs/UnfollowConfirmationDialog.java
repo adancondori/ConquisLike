@@ -34,7 +34,7 @@ import com.conquislike.adancondori.utils.GlideApp;
 import com.conquislike.adancondori.utils.ImageUtil;
 
 /**
- * Created by Alexey on 11.05.18.
+ * Created by developer on 11.05.18.
  */
 
 public class UnfollowConfirmationDialog extends DialogFragment {

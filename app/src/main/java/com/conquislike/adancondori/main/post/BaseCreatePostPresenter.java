@@ -29,7 +29,7 @@ import com.conquislike.adancondori.utils.LogUtil;
 import com.conquislike.adancondori.utils.ValidationUtil;
 
 /**
- * Created by Alexey on 03.05.18.
+ * Created by developer on 03.05.18.
  */
 
 public abstract class BaseCreatePostPresenter<V extends BaseCreatePostView> extends PickImagePresenter<V> implements OnPostCreatedListener {

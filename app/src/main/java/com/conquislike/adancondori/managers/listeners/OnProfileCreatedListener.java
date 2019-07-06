@@ -17,7 +17,7 @@
 package com.conquislike.adancondori.managers.listeners;
 
 /**
- * Created by alexey on 10/28/16.
+ * Created by developer on 10/28/16.
  */
 
 public interface OnProfileCreatedListener {
