@@ -1,4 +1,4 @@
-SocialComponents
+ConquisLike
 =============
 
 ## Summary
