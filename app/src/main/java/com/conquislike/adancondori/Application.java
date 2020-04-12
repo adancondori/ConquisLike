@@ -18,6 +18,7 @@
 package com.conquislike.adancondori;
 
 import com.conquislike.adancondori.main.interactors.PostInteractor;
+import com.conquislike.adancondori.utils.Utils;
 
 public class Application extends android.app.Application {
 
@@ -26,7 +27,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Utils.printHashKey(this);
         ApplicationHelper.initDatabaseHelper(this);
         PostInteractor.getInstance(this).subscribeToNewPosts();
     }

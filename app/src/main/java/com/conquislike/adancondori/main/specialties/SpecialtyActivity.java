@@ -1,9 +1,11 @@
 package com.conquislike.adancondori.main.specialties;
 
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -27,9 +29,13 @@ import com.conquislike.adancondori.adapters.SpecialtiesAdapter;
 import com.conquislike.adancondori.main.base.BaseActivity;
 import com.conquislike.adancondori.main.followPosts.FollowingPostsActivity;
 import com.conquislike.adancondori.main.main.MainActivity;
+import com.conquislike.adancondori.main.main.MainPresenter;
+import com.conquislike.adancondori.main.main.MainView;
+import com.conquislike.adancondori.main.profile.ProfileActivity;
 import com.conquislike.adancondori.main.rest.Rest;
 import com.conquislike.adancondori.main.search.SearchActivity;
 import com.conquislike.adancondori.model.Dato;
+import com.conquislike.adancondori.model.Post;
 import com.conquislike.adancondori.model.Specialties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,8 +59,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPresenter>
-        implements SpecialtyView, SpecialtiesAdapter.ItemListener, Callback<Dato>, EasyPermissions.PermissionCallbacks {
+public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> implements MainView, SpecialtiesAdapter.ItemListener, Callback<Dato>, EasyPermissions.PermissionCallbacks {
 
     private RecyclerView recyclerView;
     private SpecialtiesAdapter mAdapter;
@@ -115,9 +120,9 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
 
     @NonNull
     @Override
-    public SpecialtyPresenter createPresenter() {
+    public MainPresenter createPresenter() {
         if (presenter == null) {
-            return new SpecialtyPresenter(this);
+            return new MainPresenter(this);
         }
         return presenter;
     }
@@ -127,20 +132,7 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
         new DownloadFile().execute(Constants.BASE_URL + item.filename);
     }
 
-    @Override
-    public void setName(String username) {
 
-    }
-
-    @Override
-    public String getNameText() {
-        return null;
-    }
-
-    @Override
-    public void setNameError(String string) {
-
-    }
 
 
     @Override
@@ -155,7 +147,7 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.profile:
-                //presenter.onProfileMenuActionClicked();
+                presenter.onProfileMenuActionClicked();
                 return true;
 
             case R.id.followingPosts:
@@ -196,7 +188,6 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
 
     @Override
     public void onResponse(Call<Dato> call, Response<Dato> response) {
-        postsProgressBar.setVisibility(View.GONE);
         if(response.isSuccessful()) {
             dato = response.body();
             System.out.println(dato.data.size());
@@ -205,7 +196,9 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
             }
         } else {
             System.out.println(response.errorBody());
+            Toast.makeText(this, "Error al Descargar Datos", Toast.LENGTH_LONG).show();
         }
+        postsProgressBar.setVisibility(View.GONE);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -334,4 +327,63 @@ public class SpecialtyActivity extends BaseActivity<SpecialtyView, SpecialtyPres
             Toast.makeText(SpecialtyActivity.this, message, Toast.LENGTH_LONG).show();
         }
     }
+
+    //@SuppressLint("RestrictedApi")
+    @Override
+    public void openProfileActivity(String userId, View view) {
+        Intent intent = new Intent(SpecialtyActivity.this, ProfileActivity.class);
+        intent.putExtra(ProfileActivity.USER_ID_EXTRA_KEY, userId);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && view != null) {
+
+            View authorImageView = view.findViewById(R.id.authorImageView);
+
+            ActivityOptions options = ActivityOptions.
+                    makeSceneTransitionAnimation(SpecialtyActivity.this,
+                            new android.util.Pair<>(authorImageView, getString(R.string.post_author_image_transition_name)));
+            startActivityForResult(intent, ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST, options.toBundle());
+        } else {
+            startActivityForResult(intent, ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST);
+        }
+    }
+    @Override
+    public void openCreatePostActivity() {
+
+    }
+
+    @Override
+    public void hideCounterView() {
+
+    }
+
+    @Override
+    public void openPostDetailsActivity(Post post, View v) {
+
+    }
+
+    @Override
+    public void showFloatButtonRelatedSnackBar(int messageId) {
+
+    }
+
+    @Override
+    public void refreshPostList() {
+
+    }
+
+    @Override
+    public void removePost() {
+
+    }
+
+    @Override
+    public void updatePost() {
+
+    }
+
+    @Override
+    public void showCounterView(int count) {
+
+    }
+
 }

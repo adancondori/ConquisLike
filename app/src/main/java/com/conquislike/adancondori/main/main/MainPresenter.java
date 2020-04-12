@@ -33,11 +33,11 @@ import com.conquislike.adancondori.model.Post;
  * Created by developer on 03.05.18.
  */
 
-class MainPresenter extends BasePresenter<MainView> {
+public class MainPresenter extends BasePresenter<MainView> {
 
     private PostManager postManager;
 
-    MainPresenter(Context context) {
+    public MainPresenter(Context context) {
         super(context);
         postManager = PostManager.getInstance(context);
     }
@@ -61,7 +61,7 @@ class MainPresenter extends BasePresenter<MainView> {
         }));
     }
 
-    void onProfileMenuActionClicked() {
+    public void onProfileMenuActionClicked() {
         if (checkAuthorization()) {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             ifViewAttached(view -> view.openProfileActivity(userId, null));
