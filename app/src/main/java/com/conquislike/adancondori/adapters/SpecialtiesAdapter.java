@@ -1,6 +1,7 @@
 package com.conquislike.adancondori.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +12,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.conquislike.adancondori.R;
 import com.conquislike.adancondori.adapters.holders.SpeecialtyViewHolder;
+import com.conquislike.adancondori.main.specialties.SpecialtyActivity;
 import com.conquislike.adancondori.model.Specialties;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class SpecialtiesAdapter extends RecyclerView.Adapter<SpeecialtyViewHolder> {
@@ -40,7 +43,7 @@ public class SpecialtiesAdapter extends RecyclerView.Adapter<SpeecialtyViewHolde
         speecialtyViewHolder.itemListener = mListener;
         ImageView image = (ImageView)speecialtyViewHolder.image;
         Glide.with(mContext)
-                .load("http://www.conquislike.com/" + mValues.get(position).imagename)
+                .load("http://www.conquislike.com" + mValues.get(position).imagename)
                 .into(image);
     }
 

@@ -1,5 +1,6 @@
 package com.conquislike.adancondori.adapters.holders;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.conquislike.adancondori.R;
 import com.conquislike.adancondori.adapters.SpecialtiesAdapter;
+import com.conquislike.adancondori.main.specialties.SpecialtyActivity;
 import com.conquislike.adancondori.model.Specialties;
+
+import java.io.File;
 
 public class SpeecialtyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public static final String TAG = SpeecialtyViewHolder.class.getSimpleName();
@@ -45,6 +49,8 @@ public class SpeecialtyViewHolder extends RecyclerView.ViewHolder implements Vie
         date_public.setText(item.created_at);
         title.setText(item.name);
         description.setText(item.description);
+        download.setText(item.buttonName);
+        download.setBackgroundColor(item.exist ? Color.BLUE : Color.YELLOW);
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

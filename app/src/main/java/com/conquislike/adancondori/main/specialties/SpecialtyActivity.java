@@ -2,8 +2,10 @@ package com.conquislike.adancondori.main.specialties;
 
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
@@ -34,6 +36,7 @@ import com.conquislike.adancondori.main.main.MainView;
 import com.conquislike.adancondori.main.profile.ProfileActivity;
 import com.conquislike.adancondori.main.rest.Rest;
 import com.conquislike.adancondori.main.search.SearchActivity;
+import com.conquislike.adancondori.main.viewPDF.ViewPDFActivity;
 import com.conquislike.adancondori.model.Dato;
 import com.conquislike.adancondori.model.Post;
 import com.conquislike.adancondori.model.Specialties;
@@ -67,7 +70,10 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
     private Dato dato = new Dato();
     private ArrayList<Specialties> specialties = new ArrayList<>();
     private ProgressBar postsProgressBar;
+    public Specialties specialtiesDownload = null;
 
+    public static String PATH_PDF = Environment.getExternalStorageDirectory() + File.separator + "ConquisLike/";
+    public static String _SPECIALTY_NAME = "SPECIALTY_NAME";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,11 +135,32 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
 
     @Override
     public void onItemClick(Specialties item) {
-        new DownloadFile().execute(Constants.BASE_URL + item.filename);
+        specialtiesDownload = item;
+        if (isDownloaded(item)) {
+            Toast.makeText(this,"VER VER", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, ViewPDFActivity.class);
+            intent.putExtra(_SPECIALTY_NAME, item);
+            startActivity(intent);
+        } else {
+            new DownloadFile().execute(Constants.BASE_URL + item.filename);
+        }
     }
 
+    public boolean isDownloaded(Specialties item){
+        File directory = new File(getPath(item));
+        if (directory.exists()) {
+            return true;
+        }
+        return false;
+    }
 
-
+    public static String getPath(Specialties item) {
+        String name = item.filename;
+        String folder = SpecialtyActivity.PATH_PDF;
+        String fileName = name.substring(name.lastIndexOf('/') + 1, name.length());
+        String allName = folder + "/" + fileName;
+        return allName;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -193,6 +220,12 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
             System.out.println(dato.data.size());
             for (int i = 0; i < dato.data.size(); i++) {
                 specialties.addAll(dato.data);
+            }
+
+            for (Specialties specialty : specialties) {
+                if (isDownloaded(specialty)){
+                    specialty.setExist(true);
+                }
             }
         } else {
             System.out.println(response.errorBody());
@@ -258,16 +291,16 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
                 // input stream to read file - with 8k buffer
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
-                String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+                String timestamp = "";// new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 
                 //Extract file name from URL
                 fileName = f_url[0].substring(f_url[0].lastIndexOf('/') + 1, f_url[0].length());
 
                 //Append timestamp to file name
-                fileName = timestamp + "_" + fileName;
+                //fileName = timestamp + "_" + fileName;
 
                 //External directory path to save file
-                folder = Environment.getExternalStorageDirectory() + File.separator + "ConquisLike/";
+                folder = PATH_PDF;
 
                 //Create androiddeft folder if it does not exist
                 File directory = new File(folder);
@@ -304,6 +337,7 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
 
             } catch (Exception e) {
                 Log.e("Error: ", e.getMessage());
+                specialtiesDownload = null;
             }
 
             return "Something went wrong";
@@ -322,7 +356,9 @@ public class SpecialtyActivity extends BaseActivity<MainView, MainPresenter> imp
         protected void onPostExecute(String message) {
             // dismiss the dialog after the file was downloaded
             this.progressDialog.dismiss();
-
+            if (specialtiesDownload != null)
+                specialtiesDownload.setExist(true);
+            mAdapter.notifyDataSetChanged();
             // Display File path after downloading
             Toast.makeText(SpecialtyActivity.this, message, Toast.LENGTH_LONG).show();
         }
