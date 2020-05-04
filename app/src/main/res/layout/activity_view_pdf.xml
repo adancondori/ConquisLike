@@ -7,26 +7,41 @@
     tools:context=".main.viewPDF.ViewPDFActivity">
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
-        xmlns:android="http://schemas.android.com/apk/res/android" >
+        android:background="#ffffff">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/button_download"
-            android:text="View PDF"
-            android:textColor="#ffffff"
             android:id="@+id/tv_header"
-            android:textSize="18dp"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18dp">
 
         </TextView>
+
+        <ImageButton
+            android:id="@+id/btnShowFolder"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:onClick="openFolder"
+            android:background="@color/show_file"
+            android:textColor="#FFFFFF"
+            app:srcCompat="@android:drawable/ic_menu_share" />
 
         <com.github.barteksc.pdfviewer.PDFView
             android:id="@+id/pdfView"
             android:layout_below="@+id/tv_header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+        </com.github.barteksc.pdfviewer.PDFView>
+
+
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

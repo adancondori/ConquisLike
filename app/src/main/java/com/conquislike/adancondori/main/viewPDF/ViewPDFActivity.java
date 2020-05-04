@@ -1,9 +1,12 @@
 package com.conquislike.adancondori.main.viewPDF;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.conquislike.adancondori.R;
 import com.conquislike.adancondori.main.specialties.SpecialtyActivity;
@@ -75,5 +78,26 @@ public class ViewPDFActivity extends AppCompatActivity implements OnPageChangeLi
                 printBookmarksTree(b.getChildren(), sep + "-");
             }
         }
+    }
+
+    public void openFolder(View view) {
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        Uri uri = Uri.parse(SpecialtyActivity.PATH_PDF);
+//        intent.setDataAndType(uri, "file/*");
+//        startActivity(Intent.createChooser(intent, "Open folder"));
+
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        Uri screenshotUri = Uri.parse(SpecialtyActivity.getPath(item));
+        sharingIntent.setType("file/*");
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+        startActivity(Intent.createChooser(sharingIntent, "Share file"));
+
+//        File root = new File(SpecialtyActivity.PATH_PDF);
+//        Uri uri = Uri.fromFile(root);
+//
+//        Intent intent = new Intent();
+//        intent.setAction(android.content.Intent.ACTION_VIEW);
+//        intent.setData(uri);
+//        startActivityForResult(intent, 1);
     }
 }

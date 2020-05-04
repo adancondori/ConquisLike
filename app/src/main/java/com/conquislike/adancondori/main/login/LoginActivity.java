@@ -257,7 +257,7 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
     public void writeStorageTask() {
         if (hasWriteStorageTask()) {
             // Have permission, do the thing!
-            Toast.makeText(this, "TODO: Camera things", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Ahora puede Ingresar con FaceBook", Toast.LENGTH_LONG).show();
         } else {
             // Ask for one permission
             EasyPermissions.requestPermissions(

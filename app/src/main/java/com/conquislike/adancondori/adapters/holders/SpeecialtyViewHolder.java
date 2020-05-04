@@ -24,12 +24,13 @@ public class SpeecialtyViewHolder extends RecyclerView.ViewHolder implements Vie
     public TextView description;
     public Button download;
     public SpecialtiesAdapter.ItemListener itemListener;
-
+    public View view;
     Specialties item;
 
     public SpeecialtyViewHolder(@NonNull View v) {
         super(v);
         v.setOnClickListener(this);
+        this.view = v;
         date_public = (TextView) v.findViewById(R.id.date_public);
         image = (ImageView) v.findViewById(R.id.image);
         title = (TextView) v.findViewById(R.id.title);
@@ -50,7 +51,8 @@ public class SpeecialtyViewHolder extends RecyclerView.ViewHolder implements Vie
         title.setText(item.name);
         description.setText(item.description);
         download.setText(item.buttonName);
-        download.setBackgroundColor(item.exist ? Color.BLUE : Color.YELLOW);
+
+        download.setBackgroundColor(item.exist ? view.getResources().getColor(R.color.show_file) : view.getResources().getColor(R.color.download_file));
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

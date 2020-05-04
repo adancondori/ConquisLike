@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#0097D3</color>
+    <color name="primary">#1c2a48</color>
     <color name="primary_dark">#005B7F</color>
     <color name="primary_light">#D7CCC8</color>
     <color name="dart_transparent">#81000000</color>
@@ -39,4 +39,8 @@
     <color name="follow_button_pressed_color">#0087BC</color>
     <color name="follow_button_light_color">@color/white</color>
     <color name="follow_button_light_pressed_color">#f7f7f7</color>
+
+    <color name="download_file">#fa6a38</color>
+    <color name="show_file">#00d3a5</color>
+
 </resources>
