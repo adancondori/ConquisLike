@@ -16,10 +16,14 @@
 
 package com.conquislike.adancondori.main.login;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.conquislike.adancondori.Application;
 import com.conquislike.adancondori.main.specialties.SpecialtyActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -42,9 +46,14 @@ import com.conquislike.adancondori.utils.LogUtil;
 import com.conquislike.adancondori.utils.LogoutHelper;
 
 import java.util.Arrays;
+import java.util.List;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> implements LoginView,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener, EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int SIGN_IN_GOOGLE = 9001;
     public static final int LOGIN_REQUEST_CODE = 10001;
@@ -55,6 +64,13 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
 
     private CallbackManager mCallbackManager;
     private String profilePhotoUrlLarge;
+    // STORAGE PERMMISSION
+
+    private static final String[] STORAGE =
+            {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
+
+    private static final int RC_WRITE_STORAGE_PERM = 1230;
+    private static final int RC_READ_STORAGE_PERM = 1240;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +84,7 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
         initGoogleSignIn();
         initFirebaseAuth();
         initFacebookSignIn();
+        writeStorageTask();
     }
 
     private void initGoogleSignIn() {
@@ -163,6 +180,16 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
         if (requestCode == SIGN_IN_GOOGLE) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             presenter.handleGoogleSignInResult(result);
+        } else if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+            String yes = "SI";
+            String no = "NO";
+
+            // Do something after user returned from app settings screen, like showing a Toast.
+            Toast.makeText(
+                    this,
+                    getString(R.string.text_storage_write, hasWriteStorageTask() ? yes : no),
+                    Toast.LENGTH_LONG)
+                    .show();
         }
     }
 
@@ -216,7 +243,69 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
 
     @Override
     public void signInWithFacebook() {
-        LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
+        if (hasWriteStorageTask()){
+            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
+        } else {
+            writeStorageTask();
+        }
+
+    }
+
+
+    // PERMISSION STORAGE CELL PHONE
+    @AfterPermissionGranted(RC_WRITE_STORAGE_PERM)
+    public void writeStorageTask() {
+        if (hasWriteStorageTask()) {
+            // Have permission, do the thing!
+            Toast.makeText(this, "TODO: Camera things", Toast.LENGTH_LONG).show();
+        } else {
+            // Ask for one permission
+            EasyPermissions.requestPermissions(
+                    this,
+                    getString(R.string.rationale_storage_write),
+                    RC_WRITE_STORAGE_PERM,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+    }
+    private boolean hasWriteStorageTask() {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // EasyPermissions handles the request result.
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        Log.d(TAG, "onPermissionsGranted:" + requestCode + ":" + perms.size());
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        Log.d(TAG, "onPermissionsDenied:" + requestCode + ":" + perms.size());
+
+        // (Optional) Check whether the user denied any permissions and checked "NEVER ASK AGAIN."
+        // This will display a dialog directing them to enable the permission in app settings.
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
+
+    @Override
+    public void onRationaleAccepted(int requestCode) {
+
+    }
+
+    @Override
+    public void onRationaleDenied(int requestCode) {
+
     }
 }
 

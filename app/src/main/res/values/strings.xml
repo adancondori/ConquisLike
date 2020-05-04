@@ -195,5 +195,8 @@
     <string name="write_file">La aplicación necesita permisos para almacenar archivo.</string>
     <string name="download_file">Descargando especialidad</string>
 
+    <!--Permission CELL PHONE-->
+    <string name="rationale_storage_write">Esta aplicación necesita acceso para guardar Archivos (Especialidades).</string>
+    <string name="text_storage_write">Se necesita permiso de para guardar Especialidades, Almacenamiento %s.</string>
 
 </resources>
